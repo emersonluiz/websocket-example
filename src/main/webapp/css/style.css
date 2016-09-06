@@ -1,0 +1,14 @@
+.green {
+	color: green;
+}
+.red {
+	color: red;
+}
+#terminal {
+	width: 90%;
+	height: 400px;
+	background: black;
+	margin-top: 10px;
+	padding: 5px;
+	color: white
+}
