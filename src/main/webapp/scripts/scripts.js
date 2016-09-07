@@ -11,14 +11,14 @@ function connect() {
         document.getElementById("BtnDisconnect").disabled = false;
     };
     websocket.onmessage = function(event) {
-    	writeMessage(event.data);
+        writeMessage(event.data);
     };
     websocket.onerror = function(event) {
-        displayMessage('Error! ' + event.data, 'error');
+        writeMessage('Error! ' + event.data, 'error');
     };
     websocket.onclose = function() {
-    	writeMessage('<span class="red">Disconnected</span>');
-    	document.getElementById("BtnConnect").disabled = false;
+        writeMessage('<span class="red">Disconnected</span>');
+        document.getElementById("BtnConnect").disabled = false;
         document.getElementById("BtnSendMessage").disabled = true;
         document.getElementById("BtnDisconnect").disabled = true;
     };
