@@ -19,14 +19,14 @@ public class Example {
 
     @OnMessage
     public String message(String message, Session session) {
-        try {
-            //broadcast
-            for (Session s : session.getOpenSessions()) {
+        //broadcast
+        session.getOpenSessions().forEach(s -> {
+            try {
                 s.getBasicRemote().sendText("Someone interected...");
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, e.toString(), e);
             }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.toString(), e);
-        }
+        });
 
         logger.info("Send message");
         return "The websocket message is: " + message;
